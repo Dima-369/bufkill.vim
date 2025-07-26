@@ -1,3 +1,9 @@
+# Fork changes
+
+- removed setting the leader keybindings because I am using my own
+
+# Original README
+
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=1147
 
 Basic Usage:
