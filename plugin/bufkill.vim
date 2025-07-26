@@ -210,22 +210,6 @@ if !exists(':BUNDO')
   command -bang BUNDO :call <SID>UndoKill()
 endif
 
-" Keyboard mappings {{{1
-"
-noremap <Plug>BufKillAlt         :call <SID>GotoBuffer('#', '')<CR>
-noremap <Plug>BufKillBangAlt     :call <SID>GotoBuffer('#', '!')<CR>
-noremap <Plug>BufKillBack        :call <SID>GotoBuffer('bufback', '')<CR>
-noremap <Plug>BufKillBangBack    :call <SID>GotoBuffer('bufback', '!')<CR>
-noremap <Plug>BufKillForward     :call <SID>GotoBuffer('bufforward', '')<CR>
-noremap <Plug>BufKillBangForward :call <SID>GotoBuffer('bufforward', '!')<CR>
-noremap <Plug>BufKillBun         :call <SID>BufKill('bun', '')<CR>
-noremap <Plug>BufKillBangBun     :call <SID>BufKill('bun', '!')<CR>
-noremap <Plug>BufKillBd          :call <SID>BufKill('bd', '')<CR>
-noremap <Plug>BufKillBangBd      :call <SID>BufKill('bd', '!')<CR>
-noremap <Plug>BufKillBw          :call <SID>BufKill('bw', '')<CR>
-noremap <Plug>BufKillBangBw      :call <SID>BufKill('bw', '!')<CR>
-noremap <Plug>BufKillUndo        :call <SID>UndoKill()<CR>
-
 function! <SID>CreateUniqueMapping(lhs, rhs, ...)
   if hasmapto(a:rhs) && !(a:0 == 1 && a:1 == 'AllowDuplicate')
     " The user appears to have defined an alternate mapping for this command
