@@ -210,31 +210,6 @@ if !exists(':BUNDO')
   command -bang BUNDO :call <SID>UndoKill()
 endif
 
-function! <SID>CreateUniqueMapping(lhs, rhs, ...)
-  if hasmapto(a:rhs) && !(a:0 == 1 && a:1 == 'AllowDuplicate')
-    " The user appears to have defined an alternate mapping for this command
-    return
-  elseif maparg(a:lhs, 'n') != ""
-    " The user appears to have defined a mapping for a:lhs already
-    return
-  endif
-  exec 'nmap <silent> <unique> '.a:lhs.' '.a:rhs
-endfunction
-
-call <SID>CreateUniqueMapping('<Leader>bb',   '<Plug>BufKillBack')
-call <SID>CreateUniqueMapping('<Leader>bf',   '<Plug>BufKillForward')
-call <SID>CreateUniqueMapping('<Leader>bun',  '<Plug>BufKillBun')
-call <SID>CreateUniqueMapping('<Leader>!bun', '<Plug>BufKillBangBun')
-call <SID>CreateUniqueMapping('<Leader>bd',   '<Plug>BufKillBd')
-call <SID>CreateUniqueMapping('<Leader>!bd',  '<Plug>BufKillBangBd')
-call <SID>CreateUniqueMapping('<Leader>bw',   '<Plug>BufKillBw')
-call <SID>CreateUniqueMapping('<Leader>!bw',  '<Plug>BufKillBangBw')
-call <SID>CreateUniqueMapping('<Leader>bundo','<Plug>BufKillUndo')
-call <SID>CreateUniqueMapping('<Leader>ba',   '<Plug>BufKillAlt')
-if g:BufKillOverrideCtrlCaret == 1
-  call <SID>CreateUniqueMapping('<C-^>', '<Plug>BufKillAlt', 'AllowDuplicate')
-endif
-
 function! <SID>BufKill(cmd, bang) "{{{1
 " The main function that sparks the buffer change/removal
   if !exists('w:BufKillList')
